@@ -41,6 +41,8 @@ gem "bootsnap", require: false
 gem 'vite_rails'
 gem 'foreman'
 gem 'rack-cors'
+gem "psych", "5.1.2"
+gem "stringio", "3.0.4"
 
 # 環境変数管理
 gem 'dotenv-rails', groups: [:development, :test]
@@ -66,3 +68,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "dockerfile-rails", ">= 1.7", :group => :development
