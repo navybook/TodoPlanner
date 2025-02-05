@@ -14,6 +14,9 @@ gem "pg", "~> 1.1"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 
+# Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
+gem "turbo-rails"
+
 # Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
 gem "tailwindcss-rails"
 
@@ -43,6 +46,7 @@ gem 'foreman'
 gem 'rack-cors'
 gem "psych", "5.1.2"
 gem "stringio", "3.0.4"
+gem 'sorcery'
 
 # 環境変数管理
 gem 'dotenv-rails', groups: [:development, :test]
