@@ -47,6 +47,7 @@ gem 'rack-cors'
 gem "psych", "5.1.2"
 gem "stringio", "3.0.4"
 gem 'sorcery'
+gem 'active_model_serializers'
 
 # 環境変数管理
 gem 'dotenv-rails', groups: [:development, :test]
