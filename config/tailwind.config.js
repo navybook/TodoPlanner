@@ -5,7 +5,9 @@ module.exports = {
     './public/*.html',
     './app/helpers/**/*.rb',
     './app/javascript/**/*.js',
-    './app/views/**/*.{erb,haml,html,slim}'
+    './app/views/**/*.{erb,html,slim}',
+    './app/assets/stylesheets/**/*.css',
+    './app/frontend/**/*.{js,jsx,ts,tsx}'
   ],
   theme: {
     extend: {
@@ -18,5 +20,9 @@ module.exports = {
     // require('@tailwindcss/forms'),
     // require('@tailwindcss/typography'),
     // require('@tailwindcss/container-queries'),
-  ]
+    require('daisyui')
+  ],
+  daisyui: {
+    themes: ["lofi"],
+  }
 }

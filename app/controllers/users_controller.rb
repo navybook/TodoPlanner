@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       auto_login(@user)
-      redirect_to root_path, success: 'ユーザー登録が完了しました', status: :see_other
+      redirect_to api_tasks_path, success: 'ユーザー登録が完了しました', status: :see_other
     else
       flash.now[:error] = 'ユーザー登録が失敗しました'
       render :new, status: :unprocessable_entity
