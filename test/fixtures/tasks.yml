@@ -4,12 +4,12 @@ one:
   title: MyString
   description: MyText
   due_date: 2025-02-06 19:22:17
-  status: false
+  status: 1
   user: one
 
 two:
   title: MyString
   description: MyText
   due_date: 2025-02-06 19:22:17
-  status: false
+  status: 0
   user: two
