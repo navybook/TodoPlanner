@@ -30,10 +30,11 @@ export default function TodoApp() {
   };
 
   function getCsrfToken() {
-    return document.querySelector('meta[name="csrf-token"]').content;
+    const meta = document.querySelector('meta[name="csrf-token"]') as HTMLMetaElement;
+    return meta ? meta.content : "";
   }
 
-  const handleCreateTask = async (newTask) => {
+  const handleCreateTask = async (newTask: Task) => {
     try {
       const response = await fetch("/api/tasks", {
         method: "POST",
@@ -53,12 +54,12 @@ export default function TodoApp() {
     }
   };
 
-  const handleUpdate = (updatedTask) => {
+  const handleUpdate = (updatedTask: Task) => {
     setTasks(tasks.map(task => task.id === updatedTask.id ? updatedTask : task));
     fetchTasks();
   };
 
-  const handleDelete = (taskId) => {
+  const handleDelete = (taskId: number) => {
     setTasks(tasks.filter(task => task.id !== taskId));
     fetchTasks();
   };
@@ -102,7 +103,7 @@ export default function TodoApp() {
               ))}
             </ul>
           </div>
-          <TaskForm 
+          <TaskForm
             onSubmit={handleCreateTask} 
           />
         </div>

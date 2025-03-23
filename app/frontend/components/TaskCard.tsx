@@ -5,8 +5,13 @@ import useModal from "../hooks/useModal";
 
 interface TaskCardProps {
   task: Task;
-  onUpdate: (task: Task) => void;
   onDelete: (taskId: number) => void;
+  onUpdate: (task: Task) => void;
+}
+
+function getCsrfToken() {
+  const meta = document.querySelector('meta[name="csrf-token"]') as HTMLMetaElement;
+  return meta.content;
 }
 
 export default function TaskCard({
@@ -26,7 +31,7 @@ export default function TaskCard({
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').content,
+        "X-CSRF-Token": getCsrfToken(),
       },
       body: JSON.stringify(updatedTask),
     })
@@ -42,7 +47,7 @@ export default function TaskCard({
     fetch(`/api/tasks/${task.id}`, {
       method: "DELETE",
       headers: {
-        "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').content,
+        "X-CSRF-Token": getCsrfToken(),
       },
     })
       .then(() => {

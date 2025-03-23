@@ -1,16 +1,19 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import Modal from "./ui/Modal";
 import useModal from "../hooks/useModal";
+import { Task } from "../types";
 
 interface TaskFormInputs {
+  id: number;
   title: string;
   description: string;
   due_date: string;
-  status: number;
+  status: string;
+  user_id: number;
 }
 
 interface TaskFormModalProps {
-  onSubmit: (task: TaskFormInputs) => void;
+  onSubmit: (task: Task) => Promise<void>;
 }
 
 export default function TaskFormModal({ onSubmit }: TaskFormModalProps) {
@@ -46,8 +49,9 @@ export default function TaskFormModal({ onSubmit }: TaskFormModalProps) {
             />
 
             {/* 期限 */}
-            <label>期限</label>
+            <label htmlFor="due_date">期限</label>
             <input
+              id="due_date"
               type="date"
               {...register("due_date")}
               className="p-2 border rounded"
@@ -55,8 +59,9 @@ export default function TaskFormModal({ onSubmit }: TaskFormModalProps) {
             {errors.due_date && <span className="text-red-500 text-sm">{errors.due_date.message}</span>}
 
             {/* 状態 */}
-            <label>状態</label>
+            <label htmlFor="status">状態</label>
             <select
+              id="status"
               {...register("status", { valueAsNumber: true })}
               className="p-2 border rounded"
             >
