@@ -1,8 +1,8 @@
 export interface Task {
-  id: bigint;
+  id: number;
   title: string;
   description: string;
-  due_date: Date;
-  status: number;
-  user_id: bigint;
+  due_date: string;
+  status: string;
+  user_id: number;
 }
