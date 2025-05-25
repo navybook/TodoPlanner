@@ -51,7 +51,6 @@ jobs:
 
     - name: Prepare database
       run: |
-        cp config/database.yml.ci config/database.yml
         bundle exec rails db:setup
       env:
         RAILS_ENV: test
