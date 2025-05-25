@@ -64,5 +64,7 @@ jobs:
       run: yarn lint
 
     - name: Run jest
-      run: yarn test
+      run: yarn jest
 
+    - name: Run Prettier
+      run: yarn run check
