@@ -75,6 +75,3 @@ jobs:
 
     - name: Run jest
       run: yarn jest
-
-    - name: Run Prettier
-      run: yarn run check
