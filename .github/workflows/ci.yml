@@ -51,8 +51,8 @@ jobs:
 
     - name: Prepare database
       run: |
-        bundle exec rails db:create
-        bundle exec rails db:schema:load
+        bin/rails db:create
+        bin/rails db:schema:load
       env:
         RAILS_ENV: test
         DATABASE_URL: ${{ secrets.DATABASE_URL }}
