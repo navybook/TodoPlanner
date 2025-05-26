@@ -1,0 +1,77 @@
+name: Unit tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:14
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
+        cache: 'yarn'
+    
+    - name: Cache Node.js modules
+      run: yarn install
+
+    - name: Cache Ruby gems
+      uses: actions/cache@v3
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gems-
+
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.2.2'
+        bundler-cache: true
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get -yqq install libpq-dev
+        gem install bundler
+        bundle install
+
+    - name: Prepare database
+      run: |
+        bin/rails db:create
+        bin/rails db:schema:load
+
+    - name: Run RSpec
+      run: bundle exec rspec
+
+    - name: Run ESLint
+      run: yarn lint
+
+    - name: Run jest
+      run: yarn jest

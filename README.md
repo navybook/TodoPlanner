@@ -61,3 +61,14 @@
 - user_id (bigint): タスク作成者のユーザーID（Usersテーブルとの関連）。
 - created_at (datetime): 作成日時。
 - updated_at (datetime): 更新日時。
+
+## アプリ機能
+| タスク作成 | タスク更新 |
+|:-----------:|:------------:|
+| [![Image from Gyazo](https://i.gyazo.com/a79c0488444a43bec77ba39d3a229529.gif)](https://gyazo.com/a79c0488444a43bec77ba39d3a229529) | [![Image from Gyazo](https://i.gyazo.com/bb1baac872d1788bd1f2b029d7235b1f.gif)](https://gyazo.com/bb1baac872d1788bd1f2b029d7235b1f) |
+
+</br>
+
+| タスク削除 | ソート機能 |
+|:-----------:|:------------:|
+| [![Image from Gyazo](https://i.gyazo.com/a1582e23e86757f3a010591a2177c51f.gif)](https://gyazo.com/a1582e23e86757f3a010591a2177c51f) | [![Image from Gyazo](https://i.gyazo.com/56163b768bdd3bf45113f538ea31eb41.gif)](https://gyazo.com/56163b768bdd3bf45113f538ea31eb41) |

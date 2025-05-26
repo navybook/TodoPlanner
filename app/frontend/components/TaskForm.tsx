@@ -1,7 +1,7 @@
-import { useForm, SubmitHandler } from "react-hook-form";
-import Modal from "./ui/Modal";
-import useModal from "../hooks/useModal";
-import { Task } from "../types";
+import { useForm, SubmitHandler } from 'react-hook-form';
+import Modal from './ui/Modal';
+import useModal from '../hooks/useModal';
+import { Task } from '../types';
 
 interface TaskFormInputs {
   id: number;
@@ -18,7 +18,12 @@ interface TaskFormModalProps {
 
 export default function TaskFormModal({ onSubmit }: TaskFormModalProps) {
   const { modalRef, openModal, closeModal } = useModal();
-  const { register, handleSubmit, reset, formState: { errors } } = useForm<TaskFormInputs>();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<TaskFormInputs>();
 
   const submitHandler: SubmitHandler<TaskFormInputs> = (data) => {
     onSubmit(data);
@@ -36,7 +41,7 @@ export default function TaskFormModal({ onSubmit }: TaskFormModalProps) {
             <input
               type="text"
               placeholder="タスク名"
-              {...register("title", { required: "タイトルは必須です。" })}
+              {...register('title', { required: 'タイトルは必須です。' })}
               className="p-2 border rounded"
             />
             {errors.title && <span className="text-red-500 text-sm">{errors.title.message}</span>}
@@ -44,7 +49,7 @@ export default function TaskFormModal({ onSubmit }: TaskFormModalProps) {
             {/* 詳細 */}
             <textarea
               placeholder="タスクの詳細"
-              {...register("description")}
+              {...register('description')}
               className="p-2 border rounded"
             />
 
@@ -53,16 +58,18 @@ export default function TaskFormModal({ onSubmit }: TaskFormModalProps) {
             <input
               id="due_date"
               type="date"
-              {...register("due_date")}
+              {...register('due_date')}
               className="p-2 border rounded"
             />
-            {errors.due_date && <span className="text-red-500 text-sm">{errors.due_date.message}</span>}
+            {errors.due_date && (
+              <span className="text-red-500 text-sm">{errors.due_date.message}</span>
+            )}
 
             {/* 状態 */}
             <label htmlFor="status">状態</label>
             <select
               id="status"
-              {...register("status", { valueAsNumber: true })}
+              {...register('status', { valueAsNumber: true })}
               className="p-2 border rounded"
             >
               <option value={0}>未完了</option>
@@ -72,15 +79,27 @@ export default function TaskFormModal({ onSubmit }: TaskFormModalProps) {
 
             {/* ボタン */}
             <div className="flex gap-2">
-              <button type="submit" className="bg-green-500 text-white py-2 px-4 rounded shadow hover:bg-green-600">追加</button>
-              <button type="button" onClick={closeModal} className="bg-gray-500 text-white py-2 px-4 rounded shadow hover:bg-gray-600">キャンセル</button>
+              <button
+                type="submit"
+                className="bg-green-500 text-white py-2 px-4 rounded shadow hover:bg-green-600"
+              >
+                追加
+              </button>
+              <button
+                type="button"
+                onClick={closeModal}
+                className="bg-gray-500 text-white py-2 px-4 rounded shadow hover:bg-gray-600"
+              >
+                キャンセル
+              </button>
             </div>
           </form>
         </div>
       </Modal>
-      <button 
-        onClick={openModal} 
-        className="mt-4 bg-blue-500 text-white py-2 px-4 rounded shadow hover:bg-blue-600">
+      <button
+        onClick={openModal}
+        className="mt-4 bg-blue-500 text-white py-2 px-4 rounded shadow hover:bg-blue-600"
+      >
         タスクを追加
       </button>
     </>
