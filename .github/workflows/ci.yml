@@ -41,7 +41,7 @@ jobs:
         cache: 'yarn'
     
     - name: Cache Node.js modules
-    - run: yarn install
+      run: yarn install
 
     - name: Cache Ruby gems
       uses: actions/cache@v3
