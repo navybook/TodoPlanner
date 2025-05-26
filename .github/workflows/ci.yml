@@ -31,7 +31,17 @@ jobs:
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
     steps:
+    - name: Checkout code
     - uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
+        cache: 'yarn'
+    
+    - name: Cache Node.js modules
+    - run: yarn install
 
     - name: Cache Ruby gems
       uses: actions/cache@v3
