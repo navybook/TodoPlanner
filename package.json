@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
+    "lint": "eslint app/frontend/**/*.{ts,tsx}",
     "preview": "vite preview",
     "format": "prettier --write app/frontend/**/*.{ts,tsx}",
     "check": "prettier --check app/frontend/**/*.{ts,tsx}"
