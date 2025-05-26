@@ -8,7 +8,7 @@
     "preview": "vite preview",
     "format": "prettier --write app/frontend/**/*.{ts,tsx}",
     "check": "prettier --check app/frontend/**/*.{ts,tsx}",
-    "jest": "jest app/frontend/**/*.{ts,tsx}"
+    "jest": "jest --config ./jest.config.js"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
