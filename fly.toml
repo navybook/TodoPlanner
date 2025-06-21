@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for todoplanner on 2025-02-03T13:13:45+09:00
+# fly.toml app configuration file generated for todoplanner on 2025-06-12T00:38:49+09:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -10,12 +10,12 @@ console_command = '/rails/bin/rails console'
 [build]
 
 [deploy]
-  release_command = "./bin/rails db:prepare"
+  release_command = './bin/rails db:prepare'
 
 [http_service]
   internal_port = 3001
   force_https = true
-  auto_stop_machines = 'stop'
+  auto_stop_machines = true
   auto_start_machines = true
   min_machines_running = 0
   processes = ['app']
